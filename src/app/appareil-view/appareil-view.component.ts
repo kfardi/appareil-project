@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AppareilService} from '../services/appareil.service';
-import {Promise} from 'q';
+
 
 @Component({
   selector: 'app-appareil-view',
@@ -9,16 +9,17 @@ import {Promise} from 'q';
 })
 export class AppareilViewComponent implements OnInit {
 
-  lastUpdate = Promise (
-   (resolve, reject) => {
-     const date = new Date();
-  setTimeout(() => {
-    resolve(date);
-  }, 2000);
-       }
- );
-
   appareils: any[];
+
+  lastUpdate = new Promise((resolve, reject) => {
+    const date = new Date();
+    setTimeout(
+      () => {
+        resolve(date);
+      }, 2000
+    );
+  });
+
  constructor(private appareilService: AppareilService) {
  }
  ngOnInit() {

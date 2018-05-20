@@ -1,11 +1,10 @@
-import { Promise, resolve, reject } from 'q';
 
 export class AuthService {
 
   isAuth = false;
 
   signIn() {
-    return  Promise(
+    return new Promise(
       (resolve, reject) => {
         setTimeout(
           () => {
@@ -16,6 +15,7 @@ export class AuthService {
       }
     );
   }
+
 
   signOut() {
     this.isAuth = false ;
