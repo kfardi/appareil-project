@@ -16,7 +16,6 @@ export class AuthService {
     );
   }
 
-
   signOut() {
     this.isAuth = false ;
   }
