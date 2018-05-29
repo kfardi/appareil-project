@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import {Observable} from 'rxjs/Observable';
-import 'rxjs/Rx';
-import { Subscription } from 'rxjs/Rx';
+import {Observable} from 'rxjs/Rx';
+import { Subscription } from 'rxjs/Subscription';
+
 
 @Component({
   selector: 'app-root',
@@ -10,21 +10,21 @@ import { Subscription } from 'rxjs/Rx';
 })
 export class AppComponent implements OnInit, OnDestroy {
 
-  secondes: number;
-  counterSubscription: Subscription;
-  constructor(){
+   secondes: number;
+   counterSubscription: Subscription;
+  constructor() {
   }
 
-  ngOnInit(){
-    const counter = Observable.interval(1000);
-   this.counterSubscription = counter.subscribe(
-     (value: number) =>{
-       this.secondes = value;
-     }
-   );
+  ngOnInit() {
+     const counter = Observable.interval(1000);
+    this.counterSubscription = counter.subscribe(
+      (value: number) => {
+        this.secondes = value;
+      }
+    );
   }
 
-  ngOnDestroy(){
+  ngOnDestroy() {
     this.counterSubscription.unsubscribe();
   }
 }
